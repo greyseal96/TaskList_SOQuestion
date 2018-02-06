@@ -1,0 +1,49 @@
+<template>
+    <!--form-horizontal makes form-groups behave as grid rows so we don't have to add the row class-->
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="taskTitle">Title</label>
+            <input type="text" placeholder="Task Title" id="taskTitle" class="form-control" value.bind="task.title" />
+        </div>
+        <div class="form-group">
+            <label for="taskPriority" class="control-label col-sm-2">Priority</label>
+            <div class="col-sm-3">
+                <input type="number" placeholder="Task Priority" id="taskPriority" class="form-control" value.bind="task.priority" />
+            </div>
+            <label for="taskStatus" class="control-label col-sm-2">Status</label>
+            <div class="col-sm-4">
+                <!-- <input type="text" placeholder="Task Status" id="taskStatus" class="form-control" value.bind="task.status" /> -->
+                <select class="form-control" value.bind="task.status">
+                    <option repeat.for="status of taskStatuses">${status}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="taskPctComplete" class="control-label col-sm-2">Percent Complete</label>
+            <div class="col-sm-3">
+                <input type="number" placeholder="Task % Complete" id="taskPctComplete" class="form-control" value.bind="task.percentComplete" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="taskStartDate" class="control-label col-sm-2">Start Date</label>
+            <div class="col-sm-4">
+                <input type="date" placeholder="Start Date" id="taskStartDate" class="form-control" value.bind="task.startDate" />
+            </div>
+            <label for="taskDueDate" class="control-label col-sm-2">Due Date</label>
+            <div class="col-sm-4">
+                <input type="date" placeholder="Due Date" id="taskDueDate" class="form-control" value.bind="task.dueDate" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="taskDescription" class="control-label col-sm-2">Description</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="4" id="taskDescription" value.bind="task.description"></textarea>
+                <!-- <p>
+                    Dates:    | ${task.startDate} | ${task.dueDate}
+                </p> -->
+                <p textcontent.two-way = "'Dates: | ' + task.startDate + ' | ' + task.dueDate"></p>
+            </div>
+        </div>
+        <button type="button" class="btn btn-default" click.trigger="cancelClick()">Cancel</button>
+    </form>
+</template>

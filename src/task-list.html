@@ -1,0 +1,18 @@
+<template>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr repeat.for="task of tasks" class="testClass ${task.id === $parent.selectedTaskID ? 'active' : ''}" click.delegate="selectTask(task)">
+                <td>${task.id}</td>
+                <td>${task.title}</td>
+                <td>${task.priority}</td>
+            </tr>
+        </tbody>
+    </table>
+</template>
